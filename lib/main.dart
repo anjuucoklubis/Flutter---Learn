@@ -1,46 +1,34 @@
 import 'package:flutter/material.dart';
 
-// fungsi "main" akan dijalankan pertama kali, kemudian akan menjalankan fungsi "runApp", dimana fungsi "runApp" akan menjalakan class MyApp
-
-// Column di gunakan untuk mengatur data letak wigetd
-// Menyusun widgets yang ada didalamnya untuk menyusun secara vertical dari atas ke bawah
-
-// Row digunakann untuk menyusun secara horizontal dari kiri ke kanan
-
-// MainAxisAlignment untuk mengatur yang vertical pada column
-// MainAxisAlignment untuk mengatur yang horizontal pada row
-
 void main() {
-  runApp(app());
+  runApp(ContainerWidget());
 }
 
-class app extends StatelessWidget {
-  const app({super.key});
+class ContainerWidget extends StatelessWidget {
+  const ContainerWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Row and Column"),
+          title: Text("Container"),
           backgroundColor: Colors.lightBlue,
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: <Widget>[
-            Text("Column Text 1"),
-            Text("Column Text 2"),
-            Text("Column Text 3"),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                Text("Row Text 1"),
-                Text("Row Text 2"),
-                Text("Row Text 3"),
-              ],
-            )
-          ],
+        body: Container(
+          color: Colors.red,
+          // margin: EdgeInsets.all(10),
+          // padding: EdgeInsets.all(10),
+          margin: EdgeInsets.fromLTRB(10, 15, 20, 25),
+          padding: EdgeInsets.only(top:20, bottom: 20),
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+                gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: <Color>[Colors.amber, Colors.blue])),
+          ),
         ),
       ),
     );
