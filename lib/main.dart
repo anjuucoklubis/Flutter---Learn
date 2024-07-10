@@ -1,52 +1,47 @@
 import 'package:flutter/material.dart';
 
 // fungsi "main" akan dijalankan pertama kali, kemudian akan menjalankan fungsi "runApp", dimana fungsi "runApp" akan menjalakan class MyApp
+
+// Column di gunakan untuk mengatur data letak wigetd
+// Menyusun widgets yang ada didalamnya untuk menyusun secara vertical dari atas ke bawah
+
+// Row digunakann untuk menyusun secara horizontal dari kiri ke kanan
+
+// MainAxisAlignment untuk mengatur yang vertical pada column
+// MainAxisAlignment untuk mengatur yang horizontal pada row
+
 void main() {
-  runApp(new MyApp());
+  runApp(app());
 }
 
-// Catatan 1 ====================
-// cara bikin class MyApp dengan shorcut "stl" lalu enter
-// Stl adalah Stateless
-// Widged ada 2 macam : Stateless widget dan Statefull widget
-// dibawah ini adalah class MyApp dengan turunan Stateless  widget
-//material app = sebuah widget yg berisi data2 yang diperlukan oleh aplikasi yang menggunakan material desain
-
-// Catatan 2 ==================== LASTEST
-// Widget Container digunakan untuk membungkus widget, dimana nantinya dapat digunakan untuk membuat padding, margin dll
-// MaxLines = digunakan untuk memberi maximal line pada cointaner
-// Overflow = digunakan untuk mengatur bagaimana text ditampilkan  jika dia terpotong
-// softWrap = jika true diakan disesuaikan, kalau false dipotong
-// textAlign = untuk mengatur text apakah rata kiri atau rata kanan
-// Style = mengatur gaya dari text
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class app extends StatelessWidget {
+  const app({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Aplikasi Hello World"),
-          backgroundColor: Color(0xFF42A5F5),
+          title: Text("Row and Column"),
+          backgroundColor: Colors.lightBlue,
         ),
-        body: Center(
-            child: Container(
-                color: Colors.lightBlue,
-                width: 150,
-                height: 120,
-                child: Text(
-                  "Saya sedang melatih kemampuan flutter saya.",
-                  // maxLines: 2,
-                  // overflow: TextOverflow.clip,
-                  // softWrap: false,
-                  //textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontStyle: FontStyle.italic,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20),
-                ))),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: <Widget>[
+            Text("Column Text 1"),
+            Text("Column Text 2"),
+            Text("Column Text 3"),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                Text("Row Text 1"),
+                Text("Row Text 2"),
+                Text("Row Text 3"),
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
